@@ -1,9 +1,10 @@
 // eslint-disable-next-line
 import React from 'react';
-import phone from '../assets/images/top-call.png';
-import address from '../assets/images/top-map.png';
+import { Link } from 'react-router-dom';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
+import phone from '../assets/images/top-call.png';
+import address from '../assets/images/top-map.png';
 
 const colors = {
 	red: '#FF2626',
@@ -59,35 +60,41 @@ const Header = () => {
 						padding: 0.5rem 0.5rem;
 					`}
 				>
-					<li
-						css={css`
-							color: ${colors.white};
-							list-style: none;
-							text-transform: uppercase;
-							font-size: 1.3125rem;
-							font-style: bold;
-							:hover {
-								color: ${colors.orange};
-								cursor: pointer;
-							}
-						`}
-					>
-						Home
+					<li>
+						<Link
+							to='/'
+							css={css`
+								color: ${colors.white};
+								text-decoration: none;
+								text-transform: uppercase;
+								font-size: 1.3125rem;
+								font-style: bold;
+								:hover {
+									color: ${colors.orange};
+									cursor: pointer;
+								}
+							`}
+						>
+							Home
+						</Link>
 					</li>
-					<li
-						css={css`
-							color: ${colors.white};
-							list-style: none;
-							text-transform: uppercase;
-							font-size: 1.3125rem;
-							font-style: bold;
-							:hover {
-								color: ${colors.orange};
-								cursor: pointer;
-							}
-						`}
-					>
-						Shop
+					<li>
+						<Link
+							to='/shop'
+							css={css`
+								color: ${colors.white};
+								text-decoration: none;
+								text-transform: uppercase;
+								font-size: 1.3125rem;
+								font-style: bold;
+								:hover {
+									color: ${colors.orange};
+									cursor: pointer;
+								}
+							`}
+						>
+							Shop
+						</Link>
 					</li>
 				</ul>
 			</nav>

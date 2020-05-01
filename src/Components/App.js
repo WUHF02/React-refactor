@@ -1,13 +1,24 @@
 import React from 'react';
 import Header from '../Components/Header';
-// import logo from '../assets/images/logo.svg';
-// import '../styles/App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './Home';
+import Shop from './Shop';
 
 function App() {
 	return (
-		<div className='App'>
-			<Header />
-		</div>
+		<Router>
+			<div className='App'>
+				<Header />
+				<Switch>
+					<Route exact path='/'>
+						<Home />
+					</Route>
+					<Route path='/shop'>
+						<Shop />
+					</Route>
+				</Switch>
+			</div>
+		</Router>
 	);
 }
 
