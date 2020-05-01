@@ -55,7 +55,7 @@ const Home = () => {
 					background-repeat: no-repeat;
 					background-size: contain;
 					background-position: center;
-					height: 40vh;
+					height: 50vh;
 				`}
 			>
 				<h2
@@ -121,7 +121,13 @@ const Home = () => {
 						}
 					`}
 				>
-					<img src={facebook} alt='facebook' />
+					<img
+						src={facebook}
+						alt='facebook'
+						css={css`
+							max-width: 80%;
+						`}
+					/>
 				</figure>
 				<figure
 					css={css`
@@ -140,7 +146,13 @@ const Home = () => {
 						}
 					`}
 				>
-					<img src={blog} alt='blog' />
+					<img
+						src={blog}
+						alt='blog'
+						css={css`
+							max-width: 80%;
+						`}
+					/>
 				</figure>
 				<figure
 					css={css`
@@ -159,8 +171,36 @@ const Home = () => {
 						}
 					`}
 				>
-					<img src={twitter} alt='twitter' />
+					<img
+						src={twitter}
+						alt='twitter'
+						css={css`
+							max-width: 80%;
+						`}
+					/>
 				</figure>
+			</div>
+			<div
+				css={css`
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					background-color: ${colors.black};
+				`}
+			>
+				<section>
+					<button
+						css={css`
+							background-color: ${colors.black};
+							color: ${colors.white};
+							text-transform: uppercase;
+							border: 1px solid ${colors.white};
+							font-size: 1.5rem;
+						`}
+					>
+						History
+					</button>
+				</section>
 			</div>
 		</main>
 	);
