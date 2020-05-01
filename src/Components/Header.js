@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import phone from '../assets/images/top-call.png';
-import address from '../assets/images/top-map.png';
+import phone from '../assets/images/header/top-call.png';
+import address from '../assets/images/header/top-map.png';
 
 const colors = {
 	red: '#FF2626',
@@ -68,7 +68,7 @@ const Header = () => {
 								text-decoration: none;
 								text-transform: uppercase;
 								font-size: 1.3125rem;
-								font-style: bold;
+								font-weight: bold;
 								:hover {
 									color: ${colors.orange};
 									cursor: pointer;
