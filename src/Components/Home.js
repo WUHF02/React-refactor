@@ -19,6 +19,7 @@ const colors = {
 	orange: '#A39161',
 	black: '#000',
 	white: '#FFF',
+	grey: '#706c71',
 };
 
 const Home = () => {
@@ -182,24 +183,104 @@ const Home = () => {
 			</div>
 			<div
 				css={css`
+					/* height: 31.25rem; */
+					padding: 5rem 0;
 					display: flex;
-					justify-content: center;
-					align-items: center;
+					justify-content: space-around;
+					align-items: baseline;
 					background-color: ${colors.black};
 				`}
 			>
 				<section>
 					<button
 						css={css`
+							width: 9.625rem;
 							background-color: ${colors.black};
-							color: ${colors.white};
+							color: ${colors.orange};
 							text-transform: uppercase;
 							border: 1px solid ${colors.white};
-							font-size: 1.5rem;
+							font-size: 1.625rem;
+							outline: none;
+							:hover {
+								color: ${colors.grey};
+								cursor: pointer;
+							}
 						`}
 					>
 						History
 					</button>
+					<p
+						css={css`
+							max-width: 9.625rem;
+							text-transform: uppercase;
+							color: ${colors.white};
+							text-align: center;
+						`}
+					>
+						Established in the late 1960s, our family owned business
+						is based in Edinburgh and falkirk, servicing customers
+						across th UK.
+					</p>
+				</section>
+				<section>
+					<button
+						css={css`
+							width: 9.625rem;
+							background-color: ${colors.black};
+							color: ${colors.orange};
+							text-transform: uppercase;
+							border: 1px solid ${colors.white};
+							font-size: 1.625rem;
+							outline: none;
+							:hover {
+								color: ${colors.grey};
+								cursor: pointer;
+							}
+						`}
+					>
+						News
+					</button>
+					<p
+						css={css`
+							max-width: 9.625rem;
+							text-transform: uppercase;
+							color: ${colors.white};
+							text-align: center;
+						`}
+					>
+						Check out our latest news stories for all the up to date
+						hi-fi corner products and launches.
+					</p>
+				</section>
+				<section>
+					<button
+						css={css`
+							width: 9.625rem;
+							background-color: ${colors.black};
+							color: ${colors.orange};
+							text-transform: uppercase;
+							border: 1px solid ${colors.white};
+							font-size: 1.625rem;
+							outline: none;
+							:hover {
+								color: ${colors.grey};
+								cursor: pointer;
+							}
+						`}
+					>
+						shop
+					</button>
+					<p
+						css={css`
+							max-width: 9.625rem;
+							text-transform: uppercase;
+							color: ${colors.white};
+							text-align: center;
+						`}
+					>
+						Have a look in our online shop for great products and
+						deals.
+					</p>
 				</section>
 			</div>
 		</main>
