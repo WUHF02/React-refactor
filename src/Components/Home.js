@@ -15,7 +15,6 @@ import social2 from '../assets/images/home/social-2.jpg';
 import social3 from '../assets/images/home/social-3.jpg';
 
 const colors = {
-	red: '#FF2626',
 	orange: '#A39161',
 	black: '#000',
 	white: '#FFF',

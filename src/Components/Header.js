@@ -7,7 +7,6 @@ import phone from '../assets/images/header/top-call.png';
 import address from '../assets/images/header/top-map.png';
 
 const colors = {
-	red: '#FF2626',
 	orange: '#A39161',
 	black: '#000',
 	white: '#FFF',

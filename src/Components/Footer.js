@@ -10,7 +10,6 @@ import pay from '../assets/images/footer/pay_logos.png';
 
 const colors = {
 	orange: '#A39161',
-	black: '#000',
 	white: '#FFF',
 };
 
