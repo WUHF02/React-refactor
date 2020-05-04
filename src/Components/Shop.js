@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
 import example from '../assets/images/shop/creek_classic_cd.jpg';
@@ -11,7 +11,49 @@ const colors = {
 	grey: '#E1E1E1',
 };
 
+// Fetching URL
+const url = `https://hifi-corner.herokuapp.com/api/v1/products`;
+
+//  Sorting to only one kind of each item
+function getUnique(arr) {
+	return arr.filter((e, i) => arr.indexOf(e) >= i);
+}
+
+// Show products
+/* function show(data, currentCategory) {
+	if (currentCategory) {
+		data.filter(function (e) {
+			return e.category === currentCategory;
+		});
+	} else {
+
+    }
+} */
+
 const Shop = () => {
+	const [data, setData] = useState([]);
+	const [categories, setCategories] = useState([]);
+	const [manufacturers, setManufacturer] = useState([]);
+	const [currentCategory, setCurrentCategory] = useState('');
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch(url);
+				const result = await response.json();
+				console.log(result);
+				setData(result);
+				const categories = result.map((product) => product.category);
+				setCategories(getUnique(categories));
+				const manufacturer = result.map((product) => product.make);
+				setManufacturer(getUnique(manufacturer));
+			} catch (e) {
+				console.log(e);
+			}
+		};
+		fetchData();
+	}, []);
+
 	return (
 		<main css={css``}>
 			<div
@@ -63,22 +105,24 @@ const Shop = () => {
 							align-items: baseline;
 						`}
 					>
-						<li
-							css={css`
-								color: ${colors.orange};
-								list-style: none;
-							`}
-						>
-							Tube Amplifiers
-						</li>
-						<li
-							css={css`
-								color: ${colors.orange};
-								list-style: none;
-							`}
-						>
-							Speakers
-						</li>
+						{categories.map((e) => (
+							<li
+								key={e}
+								css={css`
+									color: ${colors.orange};
+									list-style: none;
+								`}
+							>
+								<button
+									css={css`
+										color: ${colors.orange};
+									`}
+									onClick={(e) => console.log(e)}
+								>
+									{e}
+								</button>
+							</li>
+						))}
 					</ul>
 					<div
 						className='left__priceContainer'
@@ -225,266 +269,62 @@ const Shop = () => {
 							grid-template-columns: 1fr 1fr 1fr 1fr;
 						`}
 					>
-						<section
-							className='productsContainer__product'
-							css={css`
-								height: 12rem;
-								padding: 0.625rem;
-								display: flex;
-								flex-direction: column;
-								justify-content: space-around;
-								align-items: center;
-							`}
-						>
-							<img
-								src={example}
-								alt='product'
+						{data.map((e) => (
+							<section
+								key={e.model}
+								className='productsContainer__product'
 								css={css`
-									object-fit: scale-down;
-									max-width: 100%;
-									filter: drop-shadow(0px 0px 1px #e1e1e1)
-										drop-shadow(
-											0px 0px 10px rgba(0, 0, 0, 0.3)
-										);
-								`}
-							/>
-							<h4
-								css={css`
-									margin: 0;
-									text-transform: uppercase;
+									height: 12rem;
+									padding: 0.625rem;
+									display: flex;
+									flex-direction: column;
+									justify-content: space-around;
+									align-items: center;
 								`}
 							>
-								Parasound
-							</h4>
-							<h5
-								css={css`
-									margin: 0;
-									color: ${colors.orange};
-									font-weight: bold;
-								`}
-							>
-								3298 kr
-							</h5>
-							<button
-								css={css`
-									color: ${colors.white};
-									background-color: ${colors.orange};
-									border: 0;
-									padding: 5% 15%;
-									text-transform: uppercase;
-								`}
-							>
-								Add to cart
-							</button>
-						</section>
-						<section
-							className='productsContainer__product'
-							css={css`
-								height: 12rem;
-								padding: 0.625rem;
-								display: flex;
-								flex-direction: column;
-								justify-content: space-around;
-								align-items: center;
-							`}
-						>
-							<img
-								src={example}
-								alt='product'
-								css={css`
-									object-fit: scale-down;
-									max-width: 100%;
-									filter: drop-shadow(0px 0px 1px #e1e1e1)
-										drop-shadow(
-											0px 0px 10px rgba(0, 0, 0, 0.3)
-										);
-								`}
-							/>
-							<h4
-								css={css`
-									margin: 0;
-									text-transform: uppercase;
-								`}
-							>
-								Parasound
-							</h4>
-							<h5
-								css={css`
-									margin: 0;
-									color: ${colors.orange};
-									font-weight: bold;
-								`}
-							>
-								3298 kr
-							</h5>
-							<button
-								css={css`
-									color: ${colors.white};
-									background-color: ${colors.orange};
-									border: 0;
-									padding: 5% 15%;
-									text-transform: uppercase;
-								`}
-							>
-								Add to cart
-							</button>
-						</section>
-						<section
-							className='productsContainer__product'
-							css={css`
-								height: 12rem;
-								padding: 0.625rem;
-								display: flex;
-								flex-direction: column;
-								justify-content: space-around;
-								align-items: center;
-							`}
-						>
-							<img
-								src={example}
-								alt='product'
-								css={css`
-									object-fit: scale-down;
-									max-width: 100%;
-									filter: drop-shadow(0px 0px 1px #e1e1e1)
-										drop-shadow(
-											0px 0px 10px rgba(0, 0, 0, 0.3)
-										);
-								`}
-							/>
-							<h4
-								css={css`
-									margin: 0;
-									text-transform: uppercase;
-								`}
-							>
-								Parasound
-							</h4>
-							<h5
-								css={css`
-									margin: 0;
-									color: ${colors.orange};
-									font-weight: bold;
-								`}
-							>
-								3298 kr
-							</h5>
-							<button
-								css={css`
-									color: ${colors.white};
-									background-color: ${colors.orange};
-									border: 0;
-									padding: 5% 15%;
-									text-transform: uppercase;
-								`}
-							>
-								Add to cart
-							</button>
-						</section>
-						<section
-							className='productsContainer__product'
-							css={css`
-								height: 12rem;
-								padding: 0.625rem;
-								display: flex;
-								flex-direction: column;
-								justify-content: space-around;
-								align-items: center;
-							`}
-						>
-							<img
-								src={example}
-								alt='product'
-								css={css`
-									object-fit: scale-down;
-									max-width: 100%;
-									filter: drop-shadow(0px 0px 1px #e1e1e1)
-										drop-shadow(
-											0px 0px 10px rgba(0, 0, 0, 0.3)
-										);
-								`}
-							/>
-							<h4
-								css={css`
-									margin: 0;
-									text-transform: uppercase;
-								`}
-							>
-								Parasound
-							</h4>
-							<h5
-								css={css`
-									margin: 0;
-									color: ${colors.orange};
-									font-weight: bold;
-								`}
-							>
-								3298 kr
-							</h5>
-							<button
-								css={css`
-									color: ${colors.white};
-									background-color: ${colors.orange};
-									border: 0;
-									padding: 5% 15%;
-									text-transform: uppercase;
-								`}
-							>
-								Add to cart
-							</button>
-						</section>
-						<section
-							className='productsContainer__product'
-							css={css`
-								height: 12rem;
-								padding: 0.625rem;
-								display: flex;
-								flex-direction: column;
-								justify-content: space-around;
-								align-items: center;
-							`}
-						>
-							<img
-								src={example}
-								alt='product'
-								css={css`
-									object-fit: scale-down;
-									max-width: 100%;
-									filter: drop-shadow(0px 0px 1px #e1e1e1)
-										drop-shadow(
-											0px 0px 10px rgba(0, 0, 0, 0.3)
-										);
-								`}
-							/>
-							<h4
-								css={css`
-									margin: 0;
-									text-transform: uppercase;
-								`}
-							>
-								Parasound
-							</h4>
-							<h5
-								css={css`
-									margin: 0;
-									color: ${colors.orange};
-									font-weight: bold;
-								`}
-							>
-								3298 kr
-							</h5>
-							<button
-								css={css`
-									color: ${colors.white};
-									background-color: ${colors.orange};
-									border: 0;
-									padding: 5% 15%;
-									text-transform: uppercase;
-								`}
-							>
-								Add to cart
-							</button>
-						</section>
+								<img
+									src={e.images[0]}
+									alt='product'
+									css={css`
+										object-fit: scale-down;
+										max-width: 100%;
+										max-height: 40%;
+										filter: drop-shadow(0px 0px 1px #e1e1e1)
+											drop-shadow(
+												0px 0px 10px rgba(0, 0, 0, 0.3)
+											);
+									`}
+								/>
+								<h4
+									css={css`
+										margin: 0;
+										text-transform: uppercase;
+									`}
+								>
+									{e.model}
+								</h4>
+								<h5
+									css={css`
+										margin: 0;
+										color: ${colors.orange};
+										font-weight: bold;
+									`}
+								>
+									{e.price} kr
+								</h5>
+								<button
+									css={css`
+										color: ${colors.white};
+										background-color: ${colors.orange};
+										border: 0;
+										padding: 5% 15%;
+										text-transform: uppercase;
+									`}
+								>
+									Add to cart
+								</button>
+							</section>
+						))}
 					</div>
 				</div>
 				<div
@@ -503,30 +343,17 @@ const Shop = () => {
 						Manufacturer
 					</h3>
 					<ul className='right__manufacturerContainer'>
-						<li
-							css={css`
-								text-transform: uppercase;
-								list-style: none;
-							`}
-						>
-							Jolida
-						</li>
-						<li
-							css={css`
-								text-transform: uppercase;
-								list-style: none;
-							`}
-						>
-							Parasound
-						</li>
-						<li
-							css={css`
-								text-transform: uppercase;
-								list-style: none;
-							`}
-						>
-							Harbeth
-						</li>
+						{manufacturers.map((e) => (
+							<li
+								key={e}
+								css={css`
+									text-transform: uppercase;
+									list-style: none;
+								`}
+							>
+								{e}
+							</li>
+						))}
 					</ul>
 					<p
 						css={css`
