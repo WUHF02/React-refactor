@@ -9,27 +9,46 @@ const Breadcrumps = () => {
 	const colors = useContext(ColorContext);
 	return (
 		<div
-			className='main__breadCrumps'
 			css={css`
-				padding: 0.7rem;
-				margin: 0 70% 0 3%;
+				width: 50%;
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
-				align-items: center;
+				margin: 0.5rem 0 0.5rem 1rem;
 			`}
 		>
 			<Link
 				to='/shop'
 				css={css`
-					color: ${colors.orange};
 					text-decoration: none;
+					color: ${colors.orange};
+					font-size: 0.8rem;
 				`}
 			>
 				Home
 			</Link>
 			<i>/</i>
-			<p>Category</p>
+			<Link
+				to='/shop'
+				css={css`
+					text-decoration: none;
+					color: ${colors.black};
+					font-size: 0.8rem;
+				`}
+			>
+				Category
+			</Link>
+			<i>/</i>
+			<Link
+				to='/shop'
+				css={css`
+					text-decoration: none;
+					color: ${colors.black};
+					font-size: 0.8rem;
+				`}
+			>
+				Manufacturer
+			</Link>
 		</div>
 	);
 };

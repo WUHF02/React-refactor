@@ -1,6 +1,5 @@
 // eslint-disable-next-line
-import React, { useEffect, useState, useContext } from 'react';
-import { ColorContext } from '../Utility';
+import React, { useEffect, useState } from 'react';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
 import Left from './Left';
@@ -17,7 +16,6 @@ function getUnique(arr) {
 }
 
 const Shop = () => {
-	const colors = useContext(ColorContext);
 	const [data, setData] = useState([]);
 	const [list, setList] = useState({ categories: [], manufacturers: [] });
 	// eslint-disable-next-line
@@ -47,7 +45,7 @@ const Shop = () => {
 
 	return (
 		<main css={css``}>
-			<Breadcrumps colors={colors} />
+			<Breadcrumps />
 			<div
 				className='main__grid'
 				css={css`
@@ -57,9 +55,9 @@ const Shop = () => {
 					margin: 1%;
 				`}
 			>
-				<Left colors={colors} list={list} />
-				<Center colors={colors} data={data} />
-				<Right colors={colors} list={list} />
+				<Left list={list} />
+				<Center data={data} />
+				<Right list={list} />
 			</div>
 		</main>
 	);

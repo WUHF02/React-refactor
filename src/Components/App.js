@@ -4,6 +4,7 @@ import Footer from '../Components/Footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Shop from './Shop/Shop';
+import Product from './Product/Product';
 import { ColorContext, colors } from './Utility';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
 						</Route>
 						<Route path='/shop'>
 							<Shop />
+						</Route>
+						<Route path='/product'>
+							<Product />
 						</Route>
 					</Switch>
 					<Footer />
