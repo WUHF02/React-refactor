@@ -1,18 +1,14 @@
 // eslint-disable-next-line
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import phone from '../assets/images/header/top-call.png';
 import address from '../assets/images/header/top-map.png';
-
-const colors = {
-	orange: '#A39161',
-	black: '#000',
-	white: '#FFF',
-};
+import { ColorContext } from './Utility';
 
 const Header = () => {
+	const colors = useContext(ColorContext);
 	return (
 		<header>
 			<ul

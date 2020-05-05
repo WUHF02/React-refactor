@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React from 'react';
+import React, { useContext } from 'react';
 /**@jsx jsx*/
 import { css, jsx } from '@emotion/core';
 import logo from '../assets/images/home/logo-white.png';
@@ -13,15 +13,11 @@ import twitter from '../assets/images/home/social-twitter.png';
 import social1 from '../assets/images/home/social-1.jpg';
 import social2 from '../assets/images/home/social-2.jpg';
 import social3 from '../assets/images/home/social-3.jpg';
-
-const colors = {
-	orange: '#A39161',
-	black: '#000',
-	white: '#FFF',
-	grey: '#706c71',
-};
+import { ColorContext } from './Utility';
 
 const Home = () => {
+	const colors = useContext(ColorContext);
+
 	return (
 		<main>
 			<figure
@@ -201,7 +197,7 @@ const Home = () => {
 							font-size: 1.625rem;
 							outline: none;
 							:hover {
-								color: ${colors.grey};
+								color: ${colors.darkgrey};
 								cursor: pointer;
 							}
 						`}
@@ -232,7 +228,7 @@ const Home = () => {
 							font-size: 1.625rem;
 							outline: none;
 							:hover {
-								color: ${colors.grey};
+								color: ${colors.darkgrey};
 								cursor: pointer;
 							}
 						`}
@@ -262,7 +258,7 @@ const Home = () => {
 							font-size: 1.625rem;
 							outline: none;
 							:hover {
-								color: ${colors.grey};
+								color: ${colors.darkgrey};
 								cursor: pointer;
 							}
 						`}
