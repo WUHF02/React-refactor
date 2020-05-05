@@ -67,7 +67,6 @@ const Header = () => {
 								text-decoration: none;
 								text-transform: uppercase;
 								font-size: 1.3125rem;
-								font-weight: bold;
 								:hover {
 									color: ${colors.orange};
 									cursor: pointer;
@@ -85,7 +84,6 @@ const Header = () => {
 								text-decoration: none;
 								text-transform: uppercase;
 								font-size: 1.3125rem;
-								font-style: bold;
 								:hover {
 									color: ${colors.orange};
 									cursor: pointer;

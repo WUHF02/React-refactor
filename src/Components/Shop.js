@@ -1,7 +1,9 @@
 // eslint-disable-next-line
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
+// eslint-disable-next-line
 import example from '../assets/images/shop/creek_classic_cd.jpg';
 
 const colors = {
@@ -19,6 +21,11 @@ function getUnique(arr) {
 	return arr.filter((e, i) => arr.indexOf(e) >= i);
 }
 
+//  Search for category, brands & price in URL
+let params = new URLSearchParams(window.location.search);
+let productCategory = params.get('product_category');
+console.log(productCategory);
+
 // Show products
 /* function show(data, currentCategory) {
 	if (currentCategory) {
@@ -26,22 +33,27 @@ function getUnique(arr) {
 			return e.category === currentCategory;
 		});
 	} else {
-
-    }
+		
+	}
 } */
 
 const Shop = () => {
 	const [data, setData] = useState([]);
 	const [categories, setCategories] = useState([]);
 	const [manufacturers, setManufacturer] = useState([]);
+	// eslint-disable-next-line
 	const [currentCategory, setCurrentCategory] = useState('');
 
+	function setCategory() {
+		return setCurrentCategory(params.get('product_category'));
+	}
+
 	useEffect(() => {
-		const fetchData = async () => {
+		(async () => {
 			try {
 				const response = await fetch(url);
 				const result = await response.json();
-				console.log(result);
+				// console.log(result);
 				setData(result);
 				const categories = result.map((product) => product.category);
 				setCategories(getUnique(categories));
@@ -50,9 +62,15 @@ const Shop = () => {
 			} catch (e) {
 				console.log(e);
 			}
-		};
-		fetchData();
+		})();
 	}, []);
+
+	if (productCategory) {
+		console.log(productCategory);
+		/* const product = data.filter((e) => {
+			return e.category === productCategory;
+		}); */
+	}
 
 	return (
 		<main css={css``}>
@@ -67,16 +85,17 @@ const Shop = () => {
 					align-items: center;
 				`}
 			>
-				<a
-					href='/'
+				<Link
+					to='/shop'
 					css={css`
 						color: ${colors.orange};
+						text-decoration: none;
 					`}
 				>
 					Home
-				</a>
+				</Link>
 				<i>/</i>
-				<p>Category</p>
+				<p>{productCategory ? productCategory : ''}</p>
 			</div>
 			<div
 				className='main__grid'
@@ -113,14 +132,17 @@ const Shop = () => {
 									list-style: none;
 								`}
 							>
-								<button
+								<Link
+									to={`/shop/?product_category=${e}`}
 									css={css`
 										color: ${colors.orange};
+										text-decoration: none;
 									`}
-									onClick={(e) => console.log(e)}
+									onClick={() => setCategory()}
+									/* onClick={(e) => console.log(e)} */
 								>
 									{e}
-								</button>
+								</Link>
 							</li>
 						))}
 					</ul>
