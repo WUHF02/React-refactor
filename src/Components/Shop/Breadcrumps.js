@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 import { css, jsx } from '@emotion/core';
 import { ColorContext } from '../Utility';
 
-const Breadcrumps = () => {
+const Breadcrumps = ({ currentCategory, onClick }) => {
 	const colors = useContext(ColorContext);
 	return (
 		<div
 			className='main__breadCrumps'
 			css={css`
 				padding: 0.7rem;
-				margin: 0 70% 0 3%;
+				margin: 0 60% 0 3%;
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
@@ -25,11 +25,18 @@ const Breadcrumps = () => {
 					color: ${colors.orange};
 					text-decoration: none;
 				`}
+				onClick={() => onClick('')}
 			>
 				Home
 			</Link>
 			<i>/</i>
-			<p>Category</p>
+			<p
+				css={css`
+					margin: 0;
+				`}
+			>
+				{currentCategory ? currentCategory : ''}
+			</p>
 		</div>
 	);
 };

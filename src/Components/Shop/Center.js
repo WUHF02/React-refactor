@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { css, jsx } from '@emotion/core';
 import { ColorContext } from '../Utility';
 
-const Center = ({ data }) => {
+const Center = ({ data, currentCategory }) => {
 	const colors = useContext(ColorContext);
 	return (
 		<div
@@ -20,7 +20,7 @@ const Center = ({ data }) => {
 					font-weight: bold;
 				`}
 			>
-				Category
+				{currentCategory ? currentCategory : ''}
 			</h2>
 			<div
 				className='center__sort'

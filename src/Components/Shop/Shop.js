@@ -18,8 +18,11 @@ function getUnique(arr) {
 const Shop = () => {
 	const [data, setData] = useState([]);
 	const [list, setList] = useState({ categories: [], manufacturers: [] });
-	// eslint-disable-next-line
 	const [currentCategory, setCurrentCategory] = useState('');
+
+	function set(category) {
+		return setCurrentCategory(category);
+	}
 
 	useEffect(() => {
 		(async () => {
@@ -44,8 +47,8 @@ const Shop = () => {
 	}, []);
 
 	return (
-		<main css={css``}>
-			<Breadcrumps />
+		<main>
+			<Breadcrumps currentCategory={currentCategory} onClick={set} />
 			<div
 				className='main__grid'
 				css={css`
@@ -55,8 +58,8 @@ const Shop = () => {
 					margin: 1%;
 				`}
 			>
-				<Left list={list} />
-				<Center data={data} />
+				<Left list={list} onClick={set} />
+				<Center data={data} currentCategory={currentCategory} />
 				<Right list={list} />
 			</div>
 		</main>

@@ -17,7 +17,7 @@ const priceGroups = [
 	'£12.000.00 and above',
 ];
 
-const Left = ({ list }) => {
+const Left = ({ list, onClick }) => {
 	const colors = useContext(ColorContext);
 	return (
 		<div
@@ -58,6 +58,7 @@ const Left = ({ list }) => {
 									text-decoration: underline;
 								}
 							`}
+							onClick={() => onClick(e)}
 						>
 							{e}
 						</button>
