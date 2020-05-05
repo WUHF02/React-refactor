@@ -1,9 +1,10 @@
+// eslint-disable-next-line
 import React from 'react';
 import { Link } from 'react-router-dom';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
 
-const Breadcrumps = ({ colors, productCategory }) => {
+const Breadcrumps = ({ colors }) => {
 	return (
 		<div
 			className='main__breadCrumps'
@@ -26,7 +27,7 @@ const Breadcrumps = ({ colors, productCategory }) => {
 				Home
 			</Link>
 			<i>/</i>
-			<p>{productCategory ? productCategory : ''}</p>
+			<p>Category</p>
 		</div>
 	);
 };

@@ -1,9 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// eslint-disable-next-line
+import React, { useContext } from 'react';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
+import { ColorContext } from '../Utility';
 
-const Left = ({ colors, categories }) => {
+const priceGroups = [
+	'£0 - £799',
+	'£800 - £999',
+	'£1.000 - £1.499',
+	'£1,500.00 - £1,999.99',
+	'£2.000 00 - £2.999.99',
+	'£3.000.00 - £3.499 99',
+	'£3,500.00 - £4,999.99',
+	'£5,000.00 - £7.999.99',
+	'£8,000 00 - £11.999.99',
+	'£12.000.00 and above',
+];
+
+const Left = ({ list }) => {
+	const colors = useContext(ColorContext);
 	return (
 		<div
 			className='grid__left'
@@ -23,7 +38,7 @@ const Left = ({ colors, categories }) => {
 					align-items: baseline;
 				`}
 			>
-				{categories.map((e) => (
+				{list.categories.map((e) => (
 					<li
 						key={e}
 						css={css`
@@ -31,17 +46,21 @@ const Left = ({ colors, categories }) => {
 							list-style: none;
 						`}
 					>
-						<Link
-							to={`/shop/?product_category=${e}`}
+						<button
 							css={css`
 								color: ${colors.orange};
 								text-decoration: none;
+								border: 0;
+								background-color: ${colors.grey};
+								font-size: 1rem;
+								cursor: pointer;
+								:hover {
+									text-decoration: underline;
+								}
 							`}
-							//onClick={() => setCategory()}
-							/* onClick={(e) => console.log(e)} */
 						>
 							{e}
-						</Link>
+						</button>
 					</li>
 				))}
 			</ul>
@@ -80,30 +99,21 @@ const Left = ({ colors, categories }) => {
 						margin: 0;
 					`}
 				>
-					<li
-						css={css`
-							color: ${colors.orange};
-							list-style: none;
-						`}
-					>
-						£0 - £799
-					</li>
-					<li
-						css={css`
-							color: ${colors.orange};
-							list-style: none;
-						`}
-					>
-						£800 - £999
-					</li>
-					<li
-						css={css`
-							color: ${colors.orange};
-							list-style: none;
-						`}
-					>
-						£1.000 - £1.499
-					</li>
+					{priceGroups.map((interval) => (
+						<li
+							key={interval}
+							css={css`
+								color: ${colors.orange};
+								list-style: none;
+								cursor: pointer;
+								:hover {
+									text-decoration: underline;
+								}
+							`}
+						>
+							{interval}
+						</li>
+					))}
 				</ul>
 			</div>
 		</div>

@@ -1,8 +1,11 @@
-import React from 'react';
+// eslint-disable-next-line
+import React, { useContext } from 'react';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
+import { ColorContext } from '../Utility';
 
-const Center = ({ colors, data, productCategory }) => {
+const Center = ({ data }) => {
+	const colors = useContext(ColorContext);
 	return (
 		<div
 			className='grid__center'
@@ -17,7 +20,7 @@ const Center = ({ colors, data, productCategory }) => {
 					font-weight: bold;
 				`}
 			>
-				{productCategory ? productCategory : ''}
+				Category
 			</h2>
 			<div
 				className='center__sort'
@@ -54,7 +57,7 @@ const Center = ({ colors, data, productCategory }) => {
 						Price
 					</button>
 				</div>
-				<p className='sort__count'>4 item(s)</p>
+				<p className='sort__count'>{data.length} item(s)</p>
 				<div
 					className='sort__total'
 					css={css`

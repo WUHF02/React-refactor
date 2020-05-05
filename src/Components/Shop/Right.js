@@ -1,10 +1,13 @@
-import React from 'react';
+// eslint-disable-next-line
+import React, { useContext } from 'react';
 // eslint-disable-next-line
 import { Link } from 'react-router-dom';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
+import { ColorContext } from '../Utility';
 
-const Right = ({ colors, manufacturers }) => {
+const Right = ({ list }) => {
+	const colors = useContext(ColorContext);
 	return (
 		<div
 			className='grid__right'
@@ -22,12 +25,16 @@ const Right = ({ colors, manufacturers }) => {
 				Manufacturer
 			</h3>
 			<ul className='right__manufacturerContainer'>
-				{manufacturers.map((e) => (
+				{list.manufacturers.map((e) => (
 					<li
 						key={e}
 						css={css`
 							text-transform: uppercase;
 							list-style: none;
+							cursor: pointer;
+							:hover {
+								text-decoration: underline;
+							}
 						`}
 					>
 						{e}
