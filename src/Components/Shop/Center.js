@@ -103,6 +103,7 @@ const Center = ({ data, currentCategory }) => {
 							flex-direction: column;
 							justify-content: space-around;
 							align-items: center;
+							text-decoration: none;
 						`}
 					>
 						<img
@@ -120,6 +121,7 @@ const Center = ({ data, currentCategory }) => {
 							css={css`
 								margin: 0;
 								text-transform: uppercase;
+								color: ${colors.black};
 							`}
 						>
 							{e.make} {e.model}

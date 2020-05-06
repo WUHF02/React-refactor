@@ -6,6 +6,7 @@ const colors = {
 	white: '#FFF',
 	grey: '#E1E1E1',
 	darkgrey: '#706c71',
+	lessdarkgrey: '#c0c0c0',
 };
 
 const ColorContext = createContext(colors);

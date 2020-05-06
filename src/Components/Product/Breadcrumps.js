@@ -13,8 +13,8 @@ const Breadcrumps = ({ data }) => {
 				width: 50%;
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
-				margin: 0.5rem 0 0.5rem 1rem;
+				justify-content: space-around;
+				margin: 1rem;
 			`}
 		>
 			<Link
