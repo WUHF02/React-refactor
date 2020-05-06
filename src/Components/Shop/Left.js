@@ -58,7 +58,7 @@ const Left = ({ list, onClick }) => {
 									text-decoration: underline;
 								}
 							`}
-							onClick={() => onClick(e)}
+							onClick={() => onClick(e, '')}
 						>
 							{e}
 						</button>

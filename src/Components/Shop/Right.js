@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { css, jsx } from '@emotion/core';
 import { ColorContext } from '../Utility';
 
-const Right = ({ list }) => {
+const Right = ({ list, onClick }) => {
 	const colors = useContext(ColorContext);
 	return (
 		<div
@@ -36,6 +36,7 @@ const Right = ({ list }) => {
 								text-decoration: underline;
 							}
 						`}
+						onClick={() => onClick('', e)}
 					>
 						{e}
 					</li>

@@ -18,12 +18,14 @@ function getUnique(arr) {
 const Shop = () => {
 	const [data, setData] = useState([]);
 	const [list, setList] = useState({ categories: [], manufacturers: [] });
-	const [currentCategory, setCurrentCategory] = useState('');
+	const [current, setCurrent] = useState({ category: '', manufacturer: '' });
+	const [showItems, setShowItems] = useState([]);
 
-	function set(category) {
-		return setCurrentCategory(category);
+	function set(category, manufacturer) {
+		return setCurrent({ category, manufacturer });
 	}
 
+	// Fetching data
 	useEffect(() => {
 		(async () => {
 			try {
@@ -46,9 +48,24 @@ const Shop = () => {
 		})();
 	}, []);
 
+	// Updating products to a specific category
+	useEffect(() => {
+		if (current.category) {
+			return setShowItems(
+				data.filter((e) => e.category === current.category)
+			);
+		} else if (current.manufacturer) {
+			return setShowItems(
+				data.filter((e) => e.make === current.manufacturer)
+			);
+		} else {
+			return setShowItems(data);
+		}
+	}, [current, data]);
+
 	return (
 		<main>
-			<Breadcrumps currentCategory={currentCategory} onClick={set} />
+			<Breadcrumps current={current} onClick={set} />
 			<div
 				className='main__grid'
 				css={css`
@@ -59,8 +76,8 @@ const Shop = () => {
 				`}
 			>
 				<Left list={list} onClick={set} />
-				<Center data={data} currentCategory={currentCategory} />
-				<Right list={list} />
+				<Center data={showItems} currentCategory={current.category} />
+				<Right list={list} onClick={set} />
 			</div>
 		</main>
 	);

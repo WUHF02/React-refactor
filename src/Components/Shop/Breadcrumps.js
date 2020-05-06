@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { css, jsx } from '@emotion/core';
 import { ColorContext } from '../Utility';
 
-const Breadcrumps = ({ currentCategory, onClick }) => {
+const Breadcrumps = ({ current, onClick }) => {
 	const colors = useContext(ColorContext);
 	return (
 		<div
@@ -35,7 +35,9 @@ const Breadcrumps = ({ currentCategory, onClick }) => {
 					margin: 0;
 				`}
 			>
-				{currentCategory ? currentCategory : ''}
+				{current.category || current.manufactuer
+					? current.category
+					: current.manufacturer}
 			</p>
 		</div>
 	);
