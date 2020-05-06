@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { ColorContext } from '../Utility';
@@ -91,7 +92,8 @@ const Center = ({ data, currentCategory }) => {
 				`}
 			>
 				{data.map((e) => (
-					<section
+					<Link
+						to={`/product?sku=${e.sku}`}
 						key={e.model}
 						className='productsContainer__product'
 						css={css`
@@ -142,7 +144,7 @@ const Center = ({ data, currentCategory }) => {
 						>
 							Add to cart
 						</button>
-					</section>
+					</Link>
 				))}
 			</div>
 		</div>

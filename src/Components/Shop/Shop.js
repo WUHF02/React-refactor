@@ -43,7 +43,7 @@ const Shop = () => {
 					manufacturers,
 				});
 			} catch (e) {
-				console.log(e);
+				console.log('Error: ', e);
 			}
 		})();
 	}, []);

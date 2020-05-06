@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { css, jsx } from '@emotion/core';
 import { ColorContext } from '../Utility';
 
-const Breadcrumps = () => {
+const Breadcrumps = ({ data }) => {
 	const colors = useContext(ColorContext);
 	return (
 		<div
@@ -36,7 +36,7 @@ const Breadcrumps = () => {
 					font-size: 0.8rem;
 				`}
 			>
-				Category
+				{data.category}
 			</Link>
 			<i>/</i>
 			<Link
@@ -47,7 +47,7 @@ const Breadcrumps = () => {
 					font-size: 0.8rem;
 				`}
 			>
-				Manufacturer
+				{data.make}
 			</Link>
 		</div>
 	);
