@@ -1,12 +1,22 @@
 // eslint-disable-next-line
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { ColorContext } from '../Utility';
 
-const Center = ({ data, currentCategory }) => {
+const Center = ({ data, currentCategory, ascending }) => {
 	const colors = useContext(ColorContext);
+	//const [organized, setOrganized] = useState(false);
+	/* const [sorted, setSorted] = useState({ data: data, isAscending: false });
+	const [order, setOrder] = useState(false); */
+
+	/* 	useEffect(() => {
+		if (organized == true) {
+			console.log(rearrange(data));
+		}
+	}, [data, organized]); */
+
 	return (
 		<div
 			className='grid__center'
@@ -40,6 +50,7 @@ const Center = ({ data, currentCategory }) => {
 						flex-direction: row;
 						justify-content: space-between;
 						align-items: center;
+						min-width: 30%;
 					`}
 				>
 					<p
@@ -54,6 +65,7 @@ const Center = ({ data, currentCategory }) => {
 						css={css`
 							background-color: ${colors.white};
 						`}
+						onClick={() => ascending()}
 					>
 						Price
 					</button>

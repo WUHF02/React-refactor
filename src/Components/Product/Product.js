@@ -33,7 +33,6 @@ const Product = () => {
 			}
 		})();
 	}, [url]);
-	console.log(data.content);
 
 	return (
 		<main

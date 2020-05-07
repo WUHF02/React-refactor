@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 /**@jsx jsx */
 import { css, jsx } from '@emotion/core';
 import Left from './Left';
@@ -15,15 +15,25 @@ function getUnique(arr) {
 	return arr.filter((e, i) => arr.indexOf(e) >= i);
 }
 
+// Organizing data in ascending order
+function organize(data) {
+	return data.sort((a, b) =>
+		a.price > b.price ? 1 : b.price > a.price ? -1 : 0
+	);
+}
+
 const Shop = () => {
 	const [data, setData] = useState([]);
 	const [list, setList] = useState({ categories: [], manufacturers: [] });
 	const [current, setCurrent] = useState({ category: '', manufacturer: '' });
 	const [showItems, setShowItems] = useState([]);
-
+	const [organized, setOrganized] = useState();
 	function set(category, manufacturer) {
 		return setCurrent({ category, manufacturer });
 	}
+	const ascending = useCallback(() => {
+		return organized === true ? setOrganized(false) : setOrganized(true);
+	});
 
 	// Fetching data
 	useEffect(() => {
@@ -63,6 +73,19 @@ const Shop = () => {
 		}
 	}, [current, data]);
 
+	// Organizing data
+	useEffect(() => {
+		if (organized === true) {
+			console.log(organized);
+			setData(organize(data));
+		} else if (organized === false) {
+			console.log(organized);
+			setData(organize(data).reverse());
+		} else {
+			setData(data);
+		}
+	}, [organized, data, ascending]);
+
 	return (
 		<main>
 			<Breadcrumps current={current} onClick={set} />
@@ -76,7 +99,11 @@ const Shop = () => {
 				`}
 			>
 				<Left list={list} onClick={set} />
-				<Center data={showItems} currentCategory={current.category} />
+				<Center
+					data={showItems}
+					currentCategory={current.category}
+					ascending={ascending}
+				/>
 				<Right list={list} onClick={set} />
 			</div>
 		</main>
